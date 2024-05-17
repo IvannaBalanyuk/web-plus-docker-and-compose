@@ -9,6 +9,7 @@ services:
     image: kupipodariday-front-image
     ports:
       - 8081:80
+    restart: on-failure 
 
   backend:
     container_name: kupipodariday-back
@@ -24,6 +25,7 @@ services:
       - .env
     depends_on:
       - postgres
+    restart: on-failure 
 
   postgres:
     container_name: postgres
@@ -34,6 +36,7 @@ services:
       - postgres_data:/data/postgres
     env_file:
       - .env
+    restart: on-failure 
 
   adminer:
     container_name: adminer
@@ -44,6 +47,7 @@ services:
       - 8085:8080
     depends_on:
       - postgres
+    restart: on-failure 
 
 networks:
   frontend:
